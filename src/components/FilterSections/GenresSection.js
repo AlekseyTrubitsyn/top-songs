@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GenresSection = ({ items, selectedGenre }) => {
+const GenresSection = ({ items, selectedGenres }) => {
   return (
     <div>
       <p className="filters__buttons-section">Жанры</p>
       {items.map((item, index) => {
         let className = "filters__button";
-        className = (selectedGenre !== "all" && item === selectedGenre) ? className + " " + className + "--selected" : className;
+        className = (selectedGenres.some(subitem => item === subitem)) ? className + " " + className + "--selected" : className;
 
         return (
           <button
@@ -23,7 +23,7 @@ const GenresSection = ({ items, selectedGenre }) => {
 
 GenresSection.propTypes = {
   items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  selectedGenre: PropTypes.string.isRequired
+  selectedGenres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 }
 
 export default GenresSection;

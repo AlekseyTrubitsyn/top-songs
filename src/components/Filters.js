@@ -8,18 +8,18 @@ const Filters = ({ filters, filterOptions, availableLetters }) => (
   <div className="filters">
     <GenresSection
       items={filterOptions.genres}
-      selectedGenre={filters.genre}
+      selectedGenres={filters.genres}
     />
     <FirstLetterSection
       sectionName="Исполнители"
       items={filterOptions.artistLetters}
-      selectedLetter={filters.artistLetters}
+      selectedLetter={filters.artistLetter}
       availableLetters={availableLetters.artistName}
     />
     <FirstLetterSection
       sectionName="Название песни"
       items={filterOptions.songLetters}
-      selectedLetter={filters.songLetters}
+      selectedLetter={filters.songLetter}
       availableLetters={availableLetters.songName}
     />
   </div>
@@ -28,8 +28,8 @@ const Filters = ({ filters, filterOptions, availableLetters }) => (
 Filters.propTypes = {
   filters: PropTypes.shape({
     genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-    songLetters: PropTypes.arrayOf(PropTypes.string).isRequired,
-    artistLetters: PropTypes.arrayOf(PropTypes.string).isRequired
+    songLetter: PropTypes.string.isRequired,
+    artistLetter: PropTypes.string.isRequired
   }).isRequired,
   filterOptions: PropTypes.shape({
     genres: PropTypes.arrayOf(PropTypes.string).isRequired,
