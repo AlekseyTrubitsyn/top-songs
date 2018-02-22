@@ -1,9 +1,15 @@
-import { FILTER_BY_GENRE, FILTER_BY_ARTIST_FIRST_LETTER, FILTER_BY_SONG_FIRST_LETTER } from "../actions";
+import { RESET_FILTERS, FILTER_BY_GENRE, FILTER_BY_ARTIST_FIRST_LETTER, FILTER_BY_SONG_FIRST_LETTER } from "../actions";
+import { createDefaultFilters } from "../utilities";
 
 const reducer = (state, action) => {
   let filters = {};
 
   switch (action.type) {
+    case RESET_FILTERS:
+      filters = createDefaultFilters();
+
+      return filterItems();
+
     case FILTER_BY_GENRE:
       let genres = state.filters.genres.slice(0);
 

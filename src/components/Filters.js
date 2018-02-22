@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import GenresSection from "./FilterSections/GenresSection";
 import FirstLetterSection from "./FilterSections/FirstLetterSection";
 
-const Filters = ({ filters, filterOptions, availableLetters, onGenreSelect, onArtistSelect, onSongSelect }) => (
+const Filters = ({ filters, filterOptions, availableLetters, onReset, onGenreSelect, onArtistSelect, onSongSelect }) => (
   <div className="filters">
+    <button onClick={onReset}>Показать все</button>
     <GenresSection
       items={filterOptions.genres}
       selectedGenres={filters.genres}
@@ -43,6 +44,7 @@ Filters.propTypes = {
     artistName: PropTypes.arrayOf(PropTypes.string).isRequired,
     songName: PropTypes.arrayOf(PropTypes.string).isRequired
   }).isRequired,
+  onReset: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
   onArtistSelect: PropTypes.func.isRequired,
   onSongSelect: PropTypes.func.isRequired

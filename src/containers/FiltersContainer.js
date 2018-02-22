@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { filterByGenre, filterByArtist, filterBySong } from '../actions';
+import { resetFilters, filterByGenre, filterByArtist, filterBySong } from '../actions';
 
 import Filters from "../components/Filters";
 
@@ -13,6 +13,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    onReset: (e) => {
+      e.preventDefault();
+
+      return dispatch(resetFilters());
+    },
     onGenreSelect: (e, name) => {
       e.preventDefault();
 
