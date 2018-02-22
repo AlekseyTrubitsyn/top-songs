@@ -10,3 +10,11 @@
     margin: 5px;
     padding: 5px;
 }
+
+.filters__button--selected {
+    border: 2px solid green;
+}
+
+.filters__button--disabled {
+    opacity: 0.4;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GenresSection = ({ items, selectedGenres }) => {
+const GenresSection = ({ items, selectedGenres, onSelect }) => {
   return (
     <div>
       <p className="filters__buttons-section">Жанры</p>
@@ -12,7 +12,8 @@ const GenresSection = ({ items, selectedGenres }) => {
         return (
           <button
             className={className}
-            key={index + "__" + item}>
+            key={index + "__" + item}
+            onClick={(e) => onSelect(e, item)}>
               {item}
           </button>
         );
@@ -23,7 +24,8 @@ const GenresSection = ({ items, selectedGenres }) => {
 
 GenresSection.propTypes = {
   items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  selectedGenres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  selectedGenres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  onSelect: PropTypes.func.isRequired
 }
 
 export default GenresSection;

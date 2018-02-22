@@ -1,8 +1,8 @@
 export const createDefaultFilters = () => (
   {
     genres: ["all"],
-    songLetter: "",
-    artistLetter: ""
+    songLetter: "all",
+    artistLetter: "all"
   }
 );
 
