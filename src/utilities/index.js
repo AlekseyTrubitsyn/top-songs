@@ -33,3 +33,18 @@ export const getUniqueItems = (arr) => {
 
   return Object.keys(obj);
 }
+
+export const getAvailableLetters = (items) => {
+  let songName = [];
+  let artistName = [];
+
+  items.forEach(item => {
+    songName.push(item.name[0].toUpperCase());
+    artistName.push(item.artistName[0].toUpperCase());
+  });
+
+  return {
+    songName,
+    artistName
+  }
+}

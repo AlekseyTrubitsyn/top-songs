@@ -2,34 +2,42 @@ import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "../actions";
 import { RESET_FILTERS, FILTER_BY_GENRE, FILTER_BY_ARTIST_FIRST_LETTER, FILTER_BY_SONG_FIRST_LETTER } from "../actions";
 import { SHOW_ALL, SHOW_FAVORITES } from "../actions";
 
-import { createDefaultFilters } from "../utilities";
+import { createDefaultFilters, getAvailableLetters } from "../utilities";
 
 const reducer = (state, action) => {
   let filters = Object.assign({}, state.filters);
   let showFavorites = state.showFavorites;
-  let search;
+  let search = state.search;
   let favoritesId = state.favoritesId.slice(0);
+  let availableLetters = Object.assign({}, state.availableLetters);
+  let filteredData = [];
 
   switch (action.type) {
     case SHOW_ALL:
-      filters = createDefaultFilters();
       showFavorites = false;
       search = "";
+      filters = createDefaultFilters();
+      filteredData = createItemsArray();
+      availableLetters = getAvailableLetters(filteredData);
 
       return Object.assign({}, state, {
-        filteredData: createItemsArray(),
+        filteredData,
+        availableLetters,
         filters,
         showFavorites,
         search
       });
 
     case SHOW_FAVORITES:
-      filters = createDefaultFilters();
       showFavorites = true;
       search = "";
+      filters = createDefaultFilters();
+      filteredData = createItemsArray();
+      availableLetters = getAvailableLetters(filteredData);
 
       return Object.assign({}, state, {
-        filteredData: createItemsArray(),
+        filteredData,
+        availableLetters,
         filters,
         showFavorites,
         search
@@ -42,18 +50,23 @@ const reducer = (state, action) => {
 
     case REMOVE_FROM_FAVORITES:
       favoritesId = favoritesId.filter(item => item !== action.id);
-      console.log(favoritesId);
+      filteredData = createItemsArray();
+      availableLetters = getAvailableLetters(filteredData);
 
       return Object.assign({}, state, {
         favoritesId,
-        filteredData: createItemsArray()
+        filteredData,
+        availableLetters
       });
 
     case RESET_FILTERS:
       filters = createDefaultFilters();
+      filteredData = createItemsArray();
+      availableLetters = getAvailableLetters(filteredData);
 
       return Object.assign({}, state, {
-        filteredData: createItemsArray(),
+        filteredData,
+        availableLetters,
         filters
       });
 
@@ -72,8 +85,12 @@ const reducer = (state, action) => {
         filters = Object.assign({}, state.filters, { genres: newGenresArr })
       }
 
+      filteredData = createItemsArray();
+      availableLetters = getAvailableLetters(filteredData);
+
       return Object.assign({}, state, {
-        filteredData: createItemsArray(),
+        filteredData,
+        availableLetters,
         filters
       });
 
