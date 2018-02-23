@@ -35,8 +35,8 @@ export const getUniqueItems = (arr) => {
 }
 
 export const getAvailableLetters = (items) => {
-  let songName = [];
-  let artistName = [];
+  let songName = ["all"];
+  let artistName = ["all"];
 
   items.forEach(item => {
     songName.push(item.name[0].toUpperCase());

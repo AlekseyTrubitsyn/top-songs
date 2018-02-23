@@ -1,6 +1,6 @@
 import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "../actions";
-import { RESET_FILTERS, FILTER_BY_GENRE, FILTER_BY_ARTIST_FIRST_LETTER, FILTER_BY_SONG_FIRST_LETTER } from "../actions";
-import { SHOW_ALL, SHOW_FAVORITES } from "../actions";
+import { RESET_FILTERS, FILTER_BY_GENRE, FILTER_BY_ARTIST_FIRST_LETTER, FILTER_BY_SONG_FIRST_LETTER, FILTER_BY_SEARCH } from "../actions";
+import { SHOW_ALL, SHOW_FAVORITES, TOGGLE_FILTERS } from "../actions";
 
 import { createDefaultFilters, getAvailableLetters } from "../utilities";
 
@@ -11,6 +11,7 @@ const reducer = (state, action) => {
   let favoritesId = state.favoritesId.slice(0);
   let availableLetters = Object.assign({}, state.availableLetters);
   let filteredData = [];
+  let showFilters = state.showFilters;
 
   switch (action.type) {
     case SHOW_ALL:
@@ -41,6 +42,13 @@ const reducer = (state, action) => {
         filters,
         showFavorites,
         search
+      });
+
+    case TOGGLE_FILTERS:
+      showFilters = !showFilters;
+
+      return Object.assign({}, state, {
+        showFilters
       });
 
     case ADD_TO_FAVORITES:
@@ -120,6 +128,18 @@ const reducer = (state, action) => {
         filters
       });
 
+    case FILTER_BY_SEARCH:
+      search = action.text;
+
+      filteredData = createItemsArray();
+      availableLetters = getAvailableLetters(filteredData);
+
+      return Object.assign({}, state, {
+        filteredData,
+        availableLetters,
+        search
+      });
+
     default:
       return state;
   }
@@ -143,7 +163,18 @@ const reducer = (state, action) => {
       return filters.songLetter === item.name[0].toUpperCase();
     }
 
-    const checkFilters = (item) => checkGenres(item) && checkArtistFirstLetter(item) && checkSongFirstLettere(item);
+    const filterBySearch = (item) => {
+      if (search === "") return true;
+
+      let name = item.name.toUpperCase();
+      let artistName = item.artistName.toUpperCase();
+      let genre = item.genres[0].name.toUpperCase();
+      let searchIgnoreCase = search.toUpperCase();
+
+      return ((name.search(searchIgnoreCase) !== -1) || (artistName.search(searchIgnoreCase) !== -1) || (genre.search(searchIgnoreCase) !== -1));
+    }
+
+    const checkFilters = (item) => checkGenres(item) && checkArtistFirstLetter(item) && checkSongFirstLettere(item) && filterBySearch(item);
 
     const checkIsFavorite = (item) => favoritesId.some(subitem => subitem === item.id);
 

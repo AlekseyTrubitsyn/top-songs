@@ -20,6 +20,7 @@ let state = {
   favoritesId: [],
   showFavorites: false,
   filteredData: defaultData,
+  showFilters: true,
   filters: createDefaultFilters(),
   search: "",
   availableLetters: {

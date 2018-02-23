@@ -5,6 +5,7 @@ import Filters from "../components/Filters";
 
 function mapStateToProps(state) {
   return {
+    showFilters: state.showFilters,
     filters: state.filters,
     filterOptions: state.filterOptions,
     availableLetters: state.availableLetters

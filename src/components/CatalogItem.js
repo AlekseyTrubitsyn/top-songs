@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CatalogItem = ({ songName, artistName, imageSource, artistUrl, songUrl, isFavorite, onSelect }) => {
+const CatalogItem = ({ songName, artistName, imageSource, artistUrl, songUrl, genre, releaseDate, isFavorite, onSelect }) => {
   let className = "catalog__item";
   className = (isFavorite) ? className + " " + className + "--selected" : className;
 
@@ -19,6 +19,8 @@ const CatalogItem = ({ songName, artistName, imageSource, artistUrl, songUrl, is
       <p className="catalog-item__subtitle">
         <a className="catalog-item__link" href={artistUrl}>{artistName}</a>
       </p>
+      <p>{genre}</p>
+      <p>{releaseDate}</p>
     </div>
   )
 }
@@ -27,9 +29,11 @@ CatalogItem.propTypes = {
   songName: PropTypes.string.isRequired,
   artistName: PropTypes.string.isRequired,
   imageSource: PropTypes.string.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
-  artistUrl: PropTypes.string,
-  songUrl: PropTypes.string
+  artistUrl: PropTypes.string.isRequired,
+  songUrl: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool.isRequired
 }
 
 export default CatalogItem;

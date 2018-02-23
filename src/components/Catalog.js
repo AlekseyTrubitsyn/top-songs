@@ -13,6 +13,8 @@ const Catalog = ({items, onSelect}) => (
         imageSource={item.artworkUrl100}
         artistUrl={item.artworkUrl100}
         songUrl={item.url}
+        genre={item.genres[0].name}
+        releaseDate={item.releaseDate}
         isFavorite={item.isFavorite}
         onSelect={(e) => onSelect(e, item.id, item.isFavorite)}
       />

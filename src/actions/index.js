@@ -1,10 +1,7 @@
 export const SHOW_ALL = "SHOW_ALL";
 export const SHOW_FAVORITES = "SHOW_FAVORITES";
 
-export const SHOW_FILTERS = "SHOW_FILTERS";
-export const HIDE_FILTERS = "HIDE_FILTERS";
-export const SHOW_SEARCH = "SHOW_SEARCH";
-export const HIDE_SEARCH = "HIDE_SEARCH";
+export const TOGGLE_FILTERS = "TOGGLE_FILTERS";
 
 export const RESET_FILTERS = "RESET_FILTERS";
 export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
@@ -65,5 +62,18 @@ export function showAll() {
 export function showFavorites() {
   return {
     type: SHOW_FAVORITES
+  }
+}
+
+export function search(text) {
+  return {
+    type: FILTER_BY_SEARCH,
+    text
+  }
+}
+
+export function toggleFilters() {
+  return {
+    type: TOGGLE_FILTERS
   }
 }

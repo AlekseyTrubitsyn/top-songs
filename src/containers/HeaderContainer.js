@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
-import { showAll, showFavorites } from "../actions";
+import { showAll, showFavorites, toggleFilters, search } from "../actions";
 
 import Header from "../components/Header";
 
 function mapStateToProps(state) {
   return {
     showFavorites: state.showFavorites,
-    search: state.search
+    showFilters: state.showFilters
   }
 };
 
@@ -21,7 +21,14 @@ function mapDispatchToProps(dispatch) {
       e.preventDefault();
 
       return dispatch(showFavorites());
-    }
+    },
+    onClickShowFilters: (e) => {
+      e.preventDefault();
+
+      return dispatch(toggleFilters());
+    },
+    onSearch: (text) => dispatch(search(text))
+
   }
 }
 const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header);
