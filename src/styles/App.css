@@ -2,7 +2,10 @@
 * {
   box-sizing: border-box; }
 
-.catalog-item {
+.App-header__button--selected {
+  border: 1px solid green; }
+
+.catalog__item {
   display: inline-block;
   width: 212px;
   border: 1px solid red;
@@ -10,8 +13,12 @@
   margin: 5px;
   padding: 5px; }
 
+.catalog__item--selected {
+  border: 1px solid green;
+  border-color: blue; }
+
 .filters__button--selected {
-  border: 2px solid green; }
+  border: 1px solid green; }
 
 .filters__button--disabled {
   opacity: 0.4; }

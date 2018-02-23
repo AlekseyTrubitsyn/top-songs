@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import CatalogItem from "./CatalogItem";
 
-const Catalog = ({items}) => (
+const Catalog = ({items, onSelect}) => (
   <div className="catalog">
     {items.map(item => (
       <CatalogItem
@@ -14,6 +14,7 @@ const Catalog = ({items}) => (
         artistUrl={item.artworkUrl100}
         songUrl={item.url}
         isFavorite={item.isFavorite}
+        onSelect={(e) => onSelect(e, item.id, item.isFavorite)}
       />
     ))}
   </div>
@@ -22,5 +23,6 @@ const Catalog = ({items}) => (
 export default Catalog;
 
 Catalog.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired
 }

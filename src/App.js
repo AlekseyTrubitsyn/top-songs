@@ -13,12 +13,11 @@ import Filters from "./containers/FiltersContainer";
 
 import { createDefaultFilters, createFilterOptions } from "./utilities";
 
-let defaultData = data.feed.results.map(item => Object.assign(item, {isFavorite: false}));
-let filterOptions = createFilterOptions(defaultData);
-console.log('filterOptions', filterOptions);
+let defaultData = data.feed.results;
 
 let state = {
   data: defaultData,
+  favoritesId: [],
   showFavorites: false,
   filteredData: defaultData,
   filters: createDefaultFilters(),

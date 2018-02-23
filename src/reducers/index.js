@@ -1,14 +1,61 @@
+import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "../actions";
 import { RESET_FILTERS, FILTER_BY_GENRE, FILTER_BY_ARTIST_FIRST_LETTER, FILTER_BY_SONG_FIRST_LETTER } from "../actions";
+import { SHOW_ALL, SHOW_FAVORITES } from "../actions";
+
 import { createDefaultFilters } from "../utilities";
 
 const reducer = (state, action) => {
-  let filters = {};
+  let filters = Object.assign({}, state.filters);
+  let showFavorites = state.showFavorites;
+  let search;
+  let favoritesId = state.favoritesId.slice(0);
 
   switch (action.type) {
+    case SHOW_ALL:
+      filters = createDefaultFilters();
+      showFavorites = false;
+      search = "";
+
+      return Object.assign({}, state, {
+        filteredData: createItemsArray(),
+        filters,
+        showFavorites,
+        search
+      });
+
+    case SHOW_FAVORITES:
+      filters = createDefaultFilters();
+      showFavorites = true;
+      search = "";
+
+      return Object.assign({}, state, {
+        filteredData: createItemsArray(),
+        filters,
+        showFavorites,
+        search
+      });
+
+    case ADD_TO_FAVORITES:
+      return Object.assign({}, state, {
+        favoritesId: [...state.favoritesId, action.id]
+      });
+
+    case REMOVE_FROM_FAVORITES:
+      favoritesId = favoritesId.filter(item => item !== action.id);
+      console.log(favoritesId);
+
+      return Object.assign({}, state, {
+        favoritesId,
+        filteredData: createItemsArray()
+      });
+
     case RESET_FILTERS:
       filters = createDefaultFilters();
 
-      return filterItems();
+      return Object.assign({}, state, {
+        filteredData: createItemsArray(),
+        filters
+      });
 
     case FILTER_BY_GENRE:
       let genres = state.filters.genres.slice(0);
@@ -25,7 +72,10 @@ const reducer = (state, action) => {
         filters = Object.assign({}, state.filters, { genres: newGenresArr })
       }
 
-      return filterItems();
+      return Object.assign({}, state, {
+        filteredData: createItemsArray(),
+        filters
+      });
 
     case FILTER_BY_ARTIST_FIRST_LETTER:
       if (action.letter === "all" || action.name === state.filters.artistLetter) {
@@ -35,7 +85,10 @@ const reducer = (state, action) => {
         filters = Object.assign({}, state.filters, { artistLetter: action.letter });
       };
 
-      return filterItems();
+      return Object.assign({}, state, {
+        filteredData: createItemsArray(),
+        filters
+      });
 
     case FILTER_BY_SONG_FIRST_LETTER:
       if (action.letter === "all" || action.name === state.filters.artistLetter) {
@@ -45,13 +98,16 @@ const reducer = (state, action) => {
         filters = Object.assign({}, state.filters, { songLetter: action.letter });
       };
 
-      return filterItems();
+      return Object.assign({}, state, {
+        filteredData: createItemsArray(),
+        filters
+      });
 
     default:
       return state;
   }
 
-  function filterItems() {
+  function createItemsArray() {
     const checkGenres = (item) => {
       if (filters.genres[0] === "all") return true;
 
@@ -72,10 +128,16 @@ const reducer = (state, action) => {
 
     const checkFilters = (item) => checkGenres(item) && checkArtistFirstLetter(item) && checkSongFirstLettere(item);
 
-    return Object.assign({}, state, {
-      filteredData: state.data.slice(0).filter(checkFilters),
-      filters
-    });
+    const checkIsFavorite = (item) => favoritesId.some(subitem => subitem === item.id);
+
+    if (showFavorites) {
+      if (!state.favoritesId.length) return [];
+
+      return state.data.slice(0).filter(checkIsFavorite).filter(checkFilters);
+
+    } else {
+      return state.data.slice(0).filter(checkFilters);
+    }
   }
 }
 

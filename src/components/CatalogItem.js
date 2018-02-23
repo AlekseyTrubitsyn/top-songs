@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CatalogItem = ({ songName, artistName, imageSource, artistUrl, songUrl, isFavorite}) => {
-  let className = "catalog-item";
-  className = (isFavorite) ? className + " " + className + "--favorite" : className;
+const CatalogItem = ({ songName, artistName, imageSource, artistUrl, songUrl, isFavorite, onSelect }) => {
+  let className = "catalog__item";
+  className = (isFavorite) ? className + " " + className + "--selected" : className;
 
   return (
-    <div className={className}>
+    <div className={className} onClick={onSelect}>
       <img
         className="catalog-item__image"
         src={imageSource}

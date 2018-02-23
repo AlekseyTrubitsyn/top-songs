@@ -1,8 +1,16 @@
 @import "./normalize.css";
 
+@mixin selected {
+    border: 1px solid green;
+}
+
 * { box-sizing: border-box; }
 
-.catalog-item {
+.App-header__button--selected {
+    @include selected;
+}
+
+.catalog__item {
     display: inline-block;
     width: 212px;
     border: 1px solid red;
@@ -11,8 +19,13 @@
     padding: 5px;
 }
 
+.catalog__item--selected {
+    @include selected;
+    border-color: blue;
+}
+
 .filters__button--selected {
-    border: 2px solid green;
+    @include selected;
 }
 
 .filters__button--disabled {
