@@ -84,6 +84,7 @@ const reducer = (state, action) => {
       if (action.name === "all" || (genres.length === 1 && genres[0] === action.name)) {
         filters = Object.assign({}, state.filters, { genres: ["all"] });
 
+
       } else if (genres.some(item => item === action.name)) {
         filters = Object.assign({}, state.filters, { genres: genres.filter(item => item !== action.name) });
 
@@ -93,18 +94,13 @@ const reducer = (state, action) => {
         filters = Object.assign({}, state.filters, { genres: newGenresArr })
       }
 
-      filteredData = createItemsArray();
-      availableLetters = getAvailableLetters(filteredData);
-
-      return Object.assign({}, state, {
-        filteredData,
-        availableLetters,
-        filters
-      });
+      return updateFilteredDataAndAvailableLetters();
 
     case FILTER_BY_ARTIST_FIRST_LETTER:
       if (action.letter === "all" || action.name === state.filters.artistLetter) {
         filters = Object.assign({}, state.filters, { artistLetter: "all" });
+
+        return updateFilteredDataAndAvailableLetters();
 
       } else {
         filters = Object.assign({}, state.filters, { artistLetter: action.letter });
@@ -118,6 +114,8 @@ const reducer = (state, action) => {
     case FILTER_BY_SONG_FIRST_LETTER:
       if (action.letter === "all" || action.name === state.filters.artistLetter) {
         filters = Object.assign({}, state.filters, { songLetter: "all" });
+
+        return updateFilteredDataAndAvailableLetters();
 
       } else {
         filters = Object.assign({}, state.filters, { songLetter: action.letter });
@@ -142,6 +140,25 @@ const reducer = (state, action) => {
 
     default:
       return state;
+  }
+
+  function updateFilteredDataAndAvailableLetters() {
+    filteredData = createItemsArray();
+
+    if (filters.genre === "all") {
+      availableLetters = {
+        artistLetters: state.filterOptions.artistLetters,
+        songLetters: state.filterOptions.songLetters
+      };
+    } else {
+      availableLetters = getAvailableLetters(filteredData);
+    }
+
+    return Object.assign({}, state, {
+      filteredData,
+      availableLetters,
+      filters
+    });
   }
 
   function createItemsArray() {

@@ -23,14 +23,14 @@ const Filters = ({ showFilters, filters, filterOptions, availableLetters, onRese
         sectionName="Исполнители"
         items={filterOptions.artistLetters}
         selectedLetter={filters.artistLetter}
-        availableLetters={availableLetters.artistName}
+        availableLetters={availableLetters.artistLetters}
         onSelect={onArtistSelect}
       />
       <FirstLetterSection
         sectionName="Название песни"
         items={filterOptions.songLetters}
         selectedLetter={filters.songLetter}
-        availableLetters={availableLetters.songName}
+        availableLetters={availableLetters.songLetters}
         onSelect={onSongSelect}
       />
     </div>

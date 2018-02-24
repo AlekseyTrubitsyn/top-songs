@@ -11,7 +11,7 @@ const Catalog = ({items, onSelect}) => (
         songName={item.name}
         artistName={item.artistName}
         imageSource={item.artworkUrl100}
-        artistUrl={item.artworkUrl100}
+        artistUrl={item.artistUrl}
         songUrl={item.url}
         genre={item.genres[0].name}
         releaseDate={item.releaseDate}

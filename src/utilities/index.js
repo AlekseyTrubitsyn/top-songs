@@ -35,16 +35,16 @@ export const getUniqueItems = (arr) => {
 }
 
 export const getAvailableLetters = (items) => {
-  let songName = ["all"];
-  let artistName = ["all"];
+  let songLetters = ["all"];
+  let artistLetters = ["all"];
 
   items.forEach(item => {
-    songName.push(item.name[0].toUpperCase());
-    artistName.push(item.artistName[0].toUpperCase());
+    songLetters.push(item.name[0].toUpperCase());
+    artistLetters.push(item.artistName[0].toUpperCase());
   });
 
   return {
-    songName,
-    artistName
+    songLetters,
+    artistLetters
   }
 }

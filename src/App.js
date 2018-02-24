@@ -24,8 +24,8 @@ let state = {
   filters: createDefaultFilters(),
   search: "",
   availableLetters: {
-    songName: [],
-    artistName: []
+    songLetters: [],
+    artistLetters: []
   },
   filterOptions: createFilterOptions(defaultData)
 };
