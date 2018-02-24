@@ -1,0 +1,26 @@
+@import "../colors.scss";
+@import "../animations.scss";
+@import "../mixins.scss";
+
+.filters {
+    @include border;
+    @include light-background;
+
+    width: 320px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    padding: 20px;
+    order: 2;
+    margin-top: -50px;
+    padding-top: 80px;
+    animation: slideLeft 1s;
+}
+
+.filters__button--selected {
+    @include selected;
+}
+
+.filters__button--disabled {
+    opacity: 0.4;
+    cursor: default;
+}

@@ -63,30 +63,37 @@ class Header extends React.Component {
           <button
             className={buttonShowAllClassName}
             onClick={this.props.onClickAll}>
-              showAll
+              <span>showAll</span>
           </button>
           <button
             className={buttonShowFavoritesClassName}
             onClick={this.props.onClickFavorites}>
-              showFavorites
+              <span>showFavorites</span>
           </button>
           <button
             className={buttonShowFiltersClassName}
-            onClick={this.props.onClickShowFilters}>showFilters</button>
+            onClick={this.props.onClickShowFilters}>
+              <span>showFilters</span>
+          </button>
           <button
             className={buttonShowSearchClassName}
-            onClick={this.handleShowSearchClick}>showSearch</button>
+            onClick={this.handleShowSearchClick}>
+              <span>showSearch</span>
+            </button>
+            {(this.state.showSearch ? (
+              <div className="App-header__search-container">
+                <input
+                  className="App-header__search"
+                  type="text"
+                  value={this.state.search}
+                  onInput={this.handleSearchInput}/>
+                <button
+                  className="App-header__search-reset"
+                  onClick={this.handleResetSearch}>
+                  <span>х</span></button>
+                </div>) : null)}
         </div>
-        <h1>Top 100 song</h1>
-        {(this.state.showSearch ? (
-          <div>
-            <input
-              className="App-header__search"
-              type="text"
-              value={this.state.search}
-              onInput={this.handleSearchInput}/>
-              <button onClick={this.handleResetSearch}>X</button>
-          </div>) : null)}
+        <h1 className="App-header__title">Top 100 song</h1>
       </div>
     );
   }

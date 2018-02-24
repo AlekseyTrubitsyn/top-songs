@@ -9,7 +9,11 @@ const Filters = ({ showFilters, filters, filterOptions, availableLetters, onRese
 
   return (
     <div className="filters">
-      <button onClick={onReset}>Показать все</button>
+      <button
+        className="filters__button"
+        onClick={onReset}>
+        <span>Показать все</span>
+      </button>
       <GenresSection
         items={filterOptions.genres}
         selectedGenres={filters.genres}

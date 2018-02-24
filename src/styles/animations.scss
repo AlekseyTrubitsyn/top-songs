@@ -1,0 +1,29 @@
+@keyframes widen {
+    from {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes delayedOpacity {
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

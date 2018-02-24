@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 const CatalogItem = ({ songName, artistName, imageSource, artistUrl, songUrl, genre, releaseDate, isFavorite, onSelect }) => {
   let className = "catalog__item";
   className = (isFavorite) ? className + " " + className + "--selected" : className;
+  songName = (songName.length > 22) ? songName.slice(0, 20) + "..." : songName;
+  artistName = (artistName.length > 22) ? artistName.slice(0, 20) + "..." : artistName;
 
   return (
     <div className={className} onClick={onSelect}>

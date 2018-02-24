@@ -1,33 +1,52 @@
 @import "./normalize.css";
+@import "./colors.scss";
+@import "./mixins.scss";
 
-@mixin selected {
-    border: 1px solid green;
-}
+@import "./components/header.scss";
+@import "./components/filters.scss";
+@import "./components/catalog.scss";
+
 
 * { box-sizing: border-box; }
 
-.App-header__button--selected {
-    @include selected;
+body {
+    background-color: $background;
+    font-size: 14px;
 }
 
-.catalog__item {
+button {
+    background: $light-blue;
+    border: none;
+    color: white;
     display: inline-block;
-    width: 212px;
-    border: 1px solid red;
-    vertical-align: top;
-    margin: 5px;
-    padding: 5px;
+    cursor: pointer;
+    padding: 0;
+    text-align: center;
+    margin: 2px;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: $mid-blue;
+        color: white;
+    }
+
+    &:active span,
+    &:focus span {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    & span {
+        line-height: 2em;
+        padding: 10px;
+    }
 }
 
-.catalog__item--selected {
-    @include selected;
-    border-color: blue;
-}
-
-.filters__button--selected {
-    @include selected;
-}
-
-.filters__button--disabled {
-    opacity: 0.4;
+.App {
+    padding-top: 120px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    align-items: flex-start;
 }

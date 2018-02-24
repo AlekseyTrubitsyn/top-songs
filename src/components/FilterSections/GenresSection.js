@@ -14,7 +14,7 @@ const GenresSection = ({ items, selectedGenres, onSelect }) => {
             className={className}
             key={index + "__" + item}
             onClick={(e) => onSelect(e, item)}>
-              {item}
+              <span>{item}</span>
           </button>
         );
       })}

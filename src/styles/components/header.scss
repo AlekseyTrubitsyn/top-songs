@@ -1,0 +1,67 @@
+@import "../colors.scss";
+@import "../mixins.scss";
+@import "../animations.scss";
+
+.App-header {
+    background-color: $header-background;
+    border-bottom: 1px solid $header-border;
+    box-shadow: 0 0 5px rgba($grey, .5);
+    color: white;
+    padding: 0.5em;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.App-header__title {
+    color: $dark-grey;
+}
+
+.App-header__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.App-header__button {
+    &--selected {
+        @include selected;
+    }
+}
+
+.App-header__search-container {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+    overflow: hidden;
+    margin-top: 2px;
+}
+
+.App-header__search-reset {
+	position: absolute;
+    top: 0;
+    bottom: 0;
+	right: 10px;
+	color: $dark-grey;
+	background: white;
+    z-index: 100;
+    padding: 0 5px;
+    animation: delayedOpacity 1.3s ease-in;
+
+    & span {
+        font-size: 1.5em;
+        padding: 0;
+        line-height: 0.6em;
+        vertical-align: top;
+    }
+}
+
+.App-header__search {
+    padding: 0 25px 0 10px;
+    border: 1px solid $beige;
+    border-radius: 5px;
+    line-height: 2em;
+    animation: widen 1s;
+}

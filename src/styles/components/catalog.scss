@@ -1,0 +1,49 @@
+@import "../colors.scss";
+@import "../mixins.scss";
+
+.catalog {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.catalog__item {
+    @include border;
+    @include light-background;
+
+    display: inline-block;
+    width: 212px;
+
+    vertical-align: top;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+
+    &:hover {
+        border-color: $light-blue;
+    }
+
+    & p {
+        margin: 5px 0;
+    }
+}
+
+.catalog__item--selected {
+    border-color: $blue;
+
+    &:hover {
+        border-color: $mid-blue;
+    }
+}
+
+.catalog-item__link {
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    color: $dark-grey;
+
+    &:hover {
+        background-color: $mid-blue;
+        color: white;
+    }
+}

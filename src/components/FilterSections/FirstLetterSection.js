@@ -18,7 +18,7 @@ const FirstLetterSection = ({ sectionName, items, selectedLetter, availableLette
             className={className}
             key={index + "__" + item}
             onClick={(e) => onSelect(e, item)}>
-              {item}
+              <span>{item}</span>
           </button>
         );
       })}
