@@ -11,6 +11,8 @@ function mapStateToProps(state) {
   function getItems() {
     let items = state.filteredData.slice(0);
 
+    if (state.favoritesId.length === 0) return items;
+
     items.forEach(item => {
       if (state.favoritesId.some(subitem => item.id === subitem)) {
         item.isFavorite = true;
@@ -27,6 +29,7 @@ function mapDispatchToProps(dispatch) {
   return {
     onSelect: (e, id, isFavorite) => {
       if(e.target.tagName === "A") return;
+      e.preventDefault();
 
       if (isFavorite) {
         return dispatch(removeFromFavorites(id));

@@ -21,8 +21,10 @@ const CatalogItem = ({ songName, artistName, imageSource, artistUrl, songUrl, ge
       <p className="catalog-item__subtitle">
         <a className="catalog-item__link" href={artistUrl}>{artistName}</a>
       </p>
-      <p>{genre}</p>
-      <p>{releaseDate}</p>
+      <div className="catalog-item__footer">
+        <p>{genre}</p>
+        <p>{releaseDate}</p>
+      </div>
     </div>
   )
 }

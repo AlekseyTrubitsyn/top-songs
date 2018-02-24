@@ -50,8 +50,8 @@ Filters.propTypes = {
     artistLetters: PropTypes.arrayOf(PropTypes.string).isRequired
   }).isRequired,
   availableLetters: PropTypes.shape({
-    artistName: PropTypes.arrayOf(PropTypes.string).isRequired,
-    songName: PropTypes.arrayOf(PropTypes.string).isRequired
+    artistLetters: PropTypes.arrayOf(PropTypes.string).isRequired,
+    songLetters: PropTypes.arrayOf(PropTypes.string).isRequired
   }).isRequired,
   onReset: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,

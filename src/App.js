@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
+import moment from "moment";
+import "moment/locale/ru";
 
 import data from "./data.json";
 
@@ -13,7 +15,20 @@ import Filters from "./containers/FiltersContainer";
 
 import { createDefaultFilters, createFilterOptions } from "./utilities";
 
-let defaultData = data.feed.results;
+moment.locale("ru");
+
+let defaultData = data.feed.results.map(item => {
+  let date = moment(item.releaseDate);
+
+  let releaseDate = date.format("LL");
+
+  let newObj = {
+    isFavorite: false,
+    releaseDate
+  }
+
+  return Object.assign({}, item, newObj);
+});
 
 let state = {
   data: defaultData,

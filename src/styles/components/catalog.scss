@@ -21,6 +21,7 @@
 
     &:hover {
         border-color: $light-blue;
+        box-shadow: 0 0 5px $light-blue;
     }
 
     & p {
@@ -30,6 +31,7 @@
 
 .catalog__item--selected {
     border-color: $blue;
+	box-shadow: 0 0 3px $light-blue;
 
     &:hover {
         border-color: $mid-blue;
@@ -46,4 +48,12 @@
         background-color: $mid-blue;
         color: white;
     }
+}
+
+.catalog-item__footer {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.8em;
+	padding: 0 5px;
+    color: darken($beige, 10%);
 }
