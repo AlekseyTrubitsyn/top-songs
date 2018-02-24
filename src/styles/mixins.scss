@@ -16,3 +16,7 @@
 @mixin light-background {
     background: $light-grey linear-gradient(145deg, lighten($light-grey, 1%) 30%, $light-grey 100%);
 }
+
+@mixin transitions {
+    transition: all 0.7s;
+}

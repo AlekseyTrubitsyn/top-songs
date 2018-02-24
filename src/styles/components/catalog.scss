@@ -5,6 +5,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    height: 700px;
+    overflow: auto;
 }
 
 .catalog__item {
@@ -13,7 +15,7 @@
 
     display: inline-block;
     width: 212px;
-
+    align-self: flex-start;
     vertical-align: top;
     margin: 5px;
     padding: 5px;

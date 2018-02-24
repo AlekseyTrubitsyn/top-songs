@@ -62,6 +62,61 @@
     padding: 0 25px 0 10px;
     border: 1px solid $beige;
     border-radius: 5px;
-    line-height: 2em;
+    line-height: 30px;
     animation: widen 1s;
+}
+
+.App-header__mode-selectors {
+	@include border;
+	border-radius: 9px;
+	margin: 0 5px;
+
+    & button {
+        @include transitions;
+        border-radius: 7px;
+    }
+}
+
+$toggle-container-width: 50;
+$toggle-container-padding: 2;
+$toggle-width: 18;
+$toggle-translateX-to: $toggle-container-width - $toggle-width - 2 * $toggle-container-padding;
+
+.App-header__toggle {
+	position: relative;
+	width: $toggle-container-width * 1px;
+	display: inline-block;
+	height: 22px;
+    background: $grey;
+	vertical-align: middle;
+	border-radius: 15px;
+	margin: 0 10px;
+    @include transitions;
+    cursor: pointer;
+}
+
+.App-header__toggle::before {
+    @include transitions;
+	content: "";
+	border-radius: 50%;
+	width: $toggle-width * 1px;
+    height:  $toggle-width * 1px;
+	background: $light-grey;
+	position: absolute;
+	left: $toggle-container-padding * 1px;
+	top: 2px;
+}
+
+.App-header__toggle-checkbox {
+    display: none;
+
+    &:checked {
+        & + .App-header__toggle {
+            background: $blue;
+
+            &::before {
+                transform: translateX($toggle-translateX-to * 1px);
+            }
+        }
+    }
 }

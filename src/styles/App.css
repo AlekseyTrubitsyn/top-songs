@@ -72,8 +72,46 @@
   padding: 0 25px 0 10px;
   border: 1px solid #d0cab6;
   border-radius: 5px;
-  line-height: 2em;
+  line-height: 30px;
   animation: widen 1s; }
+
+.App-header__mode-selectors {
+  border: 1px solid #d0cab6;
+  border-radius: 9px;
+  margin: 0 5px; }
+  .App-header__mode-selectors button {
+    transition: all 0.7s;
+    border-radius: 7px; }
+
+.App-header__toggle {
+  position: relative;
+  width: 50px;
+  display: inline-block;
+  height: 22px;
+  background: #8c95a4;
+  vertical-align: middle;
+  border-radius: 15px;
+  margin: 0 10px;
+  transition: all 0.7s;
+  cursor: pointer; }
+
+.App-header__toggle::before {
+  transition: all 0.7s;
+  content: "";
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  background: #f8f7f4;
+  position: absolute;
+  left: 2px;
+  top: 2px; }
+
+.App-header__toggle-checkbox {
+  display: none; }
+  .App-header__toggle-checkbox:checked + .App-header__toggle {
+    background: #1e88e5; }
+    .App-header__toggle-checkbox:checked + .App-header__toggle::before {
+      transform: translateX(28px); }
 
 @keyframes widen {
   from {
@@ -120,24 +158,29 @@
 .catalog {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  height: 700px;
+  overflow: auto; }
 
 .catalog__item {
   border: 1px solid #d0cab6;
   background: #f8f7f4 linear-gradient(145deg, #faf9f7 30%, #f8f7f4 100%);
   display: inline-block;
   width: 212px;
+  align-self: flex-start;
   vertical-align: top;
   margin: 5px;
   padding: 5px;
   border-radius: 5px; }
   .catalog__item:hover {
-    border-color: #79b8f0; }
+    border-color: #79b8f0;
+    box-shadow: 0 0 5px #79b8f0; }
   .catalog__item p {
     margin: 5px 0; }
 
 .catalog__item--selected {
-  border-color: #1e88e5; }
+  border-color: #1e88e5;
+  box-shadow: 0 0 3px #79b8f0; }
   .catalog__item--selected:hover {
     border-color: #4ca0ea; }
 
@@ -149,6 +192,13 @@
   .catalog-item__link:hover {
     background-color: #4ca0ea;
     color: white; }
+
+.catalog-item__footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  padding: 0 5px;
+  color: #bcb397; }
 
 * {
   box-sizing: border-box; }

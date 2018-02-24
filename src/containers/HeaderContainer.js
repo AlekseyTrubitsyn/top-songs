@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { showAll, showFavorites, toggleFilters, search } from "../actions";
+import { showAll, showFavorites, toggleFavorites, toggleFilters, search } from "../actions";
 
 import Header from "../components/Header";
 
@@ -22,6 +22,7 @@ function mapDispatchToProps(dispatch) {
 
       return dispatch(showFavorites());
     },
+    onModeToggle: () => dispatch(toggleFavorites()),
     onClickShowFilters: (e) => {
       e.preventDefault();
 

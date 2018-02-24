@@ -1,5 +1,6 @@
 export const SHOW_ALL = "SHOW_ALL";
 export const SHOW_FAVORITES = "SHOW_FAVORITES";
+export const TOGGLE_FAVORITES = "TOGGLE_FAVORITES";
 
 export const TOGGLE_FILTERS = "TOGGLE_FILTERS";
 
@@ -62,6 +63,12 @@ export function showAll() {
 export function showFavorites() {
   return {
     type: SHOW_FAVORITES
+  }
+}
+
+export function toggleFavorites() {
+  return {
+    type: TOGGLE_FAVORITES
   }
 }
 

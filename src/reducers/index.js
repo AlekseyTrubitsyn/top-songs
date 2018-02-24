@@ -1,6 +1,6 @@
 import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "../actions";
 import { RESET_FILTERS, FILTER_BY_GENRE, FILTER_BY_ARTIST_FIRST_LETTER, FILTER_BY_SONG_FIRST_LETTER, FILTER_BY_SEARCH } from "../actions";
-import { SHOW_ALL, SHOW_FAVORITES, TOGGLE_FILTERS } from "../actions";
+import { SHOW_ALL, SHOW_FAVORITES, TOGGLE_FAVORITES, TOGGLE_FILTERS } from "../actions";
 
 import { createDefaultFilters, getAvailableLetters } from "../utilities";
 
@@ -31,6 +31,21 @@ const reducer = (state, action) => {
 
     case SHOW_FAVORITES:
       showFavorites = true;
+      search = "";
+      filters = createDefaultFilters();
+      filteredData = createItemsArray();
+      availableLetters = getAvailableLetters(filteredData);
+
+      return Object.assign({}, state, {
+        filteredData,
+        availableLetters,
+        filters,
+        showFavorites,
+        search
+      });
+
+    case TOGGLE_FAVORITES:
+      showFavorites = !state.showFavorites;
       search = "";
       filters = createDefaultFilters();
       filteredData = createItemsArray();

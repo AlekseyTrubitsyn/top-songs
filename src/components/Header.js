@@ -60,25 +60,37 @@ class Header extends React.Component {
     return (
       <div className="App-header">
         <div className="App-header__buttons">
-          <button
-            className={buttonShowAllClassName}
-            onClick={this.props.onClickAll}>
-              <span>showAll</span>
-          </button>
-          <button
-            className={buttonShowFavoritesClassName}
-            onClick={this.props.onClickFavorites}>
-              <span>showFavorites</span>
-          </button>
+          <div className="App-header__mode-selectors">
+            <button
+              className={buttonShowAllClassName}
+              onClick={this.props.onClickAll}>
+              <span>All</span>
+            </button>
+            <label
+              className="App-header__toggle-container">
+              <input
+                className="App-header__toggle-checkbox"
+                type="checkbox"
+                checked={this.props.showFavorites}
+                onChange={this.props.onModeToggle}/>
+              <span
+                className="App-header__toggle"></span>
+            </label>
+            <button
+              className={buttonShowFavoritesClassName}
+              onClick={this.props.onClickFavorites}>
+              <span>Favorites</span>
+            </button>
+          </div>
           <button
             className={buttonShowFiltersClassName}
             onClick={this.props.onClickShowFilters}>
-              <span>showFilters</span>
+              <span>show filters</span>
           </button>
           <button
             className={buttonShowSearchClassName}
             onClick={this.handleShowSearchClick}>
-              <span>showSearch</span>
+              <span>show search</span>
             </button>
             {(this.state.showSearch ? (
               <div className="App-header__search-container">
