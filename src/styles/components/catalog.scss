@@ -22,10 +22,16 @@
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
+    position: relative;
+    overflow: hidden;
 
     &:hover {
         border-color: $light-blue;
         box-shadow: 0 0 5px $light-blue;
+
+        & .catalog-item__like-button {
+            display: block;
+        }
     }
 
     & p {
@@ -33,12 +39,39 @@
     }
 }
 
+
 .catalog__item--selected {
     border-color: $blue;
 	box-shadow: 0 0 3px $light-blue;
 
     &:hover {
         border-color: $mid-blue;
+    }
+}
+
+.catalog-item__like-button {
+    display: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    background-image: url("../img/like.svg");
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+
+    &:hover {
+        background-color: transparent;
+    }
+
+    &--delete {
+        background-image: url("../img/close.svg");
+        opacity: 0.4;
     }
 }
 
