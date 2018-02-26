@@ -9,10 +9,10 @@
     color: white;
     padding: 0.5em;
     text-align: center;
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
+    flex-shrink: 0;
 }
 
 .App-header__title {
