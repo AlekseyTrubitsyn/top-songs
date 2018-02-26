@@ -1,6 +1,7 @@
 @import "../colors.scss";
 @import "../mixins.scss";
 @import "../animations.scss";
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 
 .App-header {
     background-color: $header-background;
@@ -17,6 +18,7 @@
 
 .App-header__title {
     color: $dark-grey;
+    font-family: 'Permanent Marker', cursive;
 }
 
 .App-header__buttons {

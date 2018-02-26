@@ -105,7 +105,7 @@ class Header extends React.Component {
                   <span>х</span></button>
                 </div>) : null)}
         </div>
-        <h1 className="App-header__title">Top 100 song</h1>
+        <h1 className="App-header__title">Hot Tracks</h1>
       </div>
     );
   }
